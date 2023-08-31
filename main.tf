@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.region
+}
+
 data "aws_ami" "ubuntu" {
   count = var.ami_id == null ? 1 : 0
 
@@ -21,6 +25,6 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "snow_demo" {
-    instance_type = var.instance_type
-    ami           = var.ami_id == null ? data.aws_ami.ubuntu[0].id : var.ami_id
+  instance_type = var.instance_type
+  ami           = var.ami_id == null ? data.aws_ami.ubuntu[0].id : var.ami_id
 }
