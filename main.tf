@@ -1,5 +1,8 @@
 provider "aws" {
   region = var.region
+  default_tags = {
+    Name = "SNOW Catalog demo"
+  }
 }
 
 data "aws_ami" "ubuntu" {
@@ -27,4 +30,5 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "snow_demo" {
   instance_type = var.instance_type
   ami           = var.ami_id == null ? data.aws_ami.ubuntu[0].id : var.ami_id
+
 }
