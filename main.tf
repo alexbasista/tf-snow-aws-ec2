@@ -1,7 +1,9 @@
 provider "aws" {
   region = var.region
-  default_tags = {
-    Name = "SNOW Catalog demo"
+  default_tags {
+    tags = {
+      Name = "SNOW Catalog demo"
+    }
   }
 }
 
